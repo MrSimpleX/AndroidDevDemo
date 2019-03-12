@@ -145,30 +145,30 @@ public class CommonWebNoTitleActivity extends AppCompatActivity {
 
 
 		private void showFileSelect() {
-				if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.CAMERA)) {
-						//图库选图的intent
-						Intent intent1 = new Intent(Intent.ACTION_PICK);
-						intent1.setDataAndType(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, "image/*");
-						//相机拍照
-						Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-						String pictureFile = DateFormat.format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA)) + ".jpg";
-						mPath = getPhotoPath() + pictureFile;
-						File file = new File(mPath);
-						Uri imageUri = Uri.fromFile(file);
-						intent2.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-
-						Intent intent = Intent.createChooser(intent1, "选取图片");
-						intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{intent2});
-
-						startActivityForResult(intent, REQUEST_SELECT_FILE_CODE);
-				} else {
-						// Ask for both permissions
-						EasyPermissions.requestPermissions(
-							CommonWebNoTitleActivity.this,
-							"请您开启摄像头权限",
-							RC_CAMER,
-							CAMERA);
-				}
+//				if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.CAMERA)) {
+//						//图库选图的intent
+//						Intent intent1 = new Intent(Intent.ACTION_PICK);
+//						intent1.setDataAndType(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, "image/*");
+//						//相机拍照
+//						Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//						String pictureFile = DateFormat.format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA)) + ".jpg";
+//						mPath = getPhotoPath() + pictureFile;
+//						File file = new File(mPath);
+//						Uri imageUri = Uri.fromFile(file);
+//						intent2.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//
+//						Intent intent = Intent.createChooser(intent1, "选取图片");
+//						intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{intent2});
+//
+//						startActivityForResult(intent, REQUEST_SELECT_FILE_CODE);
+//				} else {
+//						// Ask for both permissions
+//						EasyPermissions.requestPermissions(
+//							CommonWebNoTitleActivity.this,
+//							"请您开启摄像头权限",
+//							RC_CAMER,
+//							CAMERA);
+//				}
 
 
 		}
@@ -252,22 +252,22 @@ public class CommonWebNoTitleActivity extends AppCompatActivity {
 
 				@JavascriptInterface
 				public void call(String phone) {
-						if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.CALL_PHONE)) {
-								Intent intentCall = new Intent(Intent.ACTION_CALL,
-									Uri.parse("tel:" + phone));
-								if (ActivityCompat.checkSelfPermission(CommonWebNoTitleActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-										ADToast.showShort(CommonWebNoTitleActivity.this, "请到设置中开启拨打电话权限");
-										return;
-								}
-								startActivity(intentCall);
-						} else {
-								// Ask for both permissions
-								EasyPermissions.requestPermissions(
-									CommonWebNoTitleActivity.this,
-									"请先开启拨打电话权限",
-									RC_CALL,
-									Manifest.permission.CALL_PHONE);
-						}
+//						if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.CALL_PHONE)) {
+//								Intent intentCall = new Intent(Intent.ACTION_CALL,
+//									Uri.parse("tel:" + phone));
+//								if (ActivityCompat.checkSelfPermission(CommonWebNoTitleActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//										ADToast.showShort(CommonWebNoTitleActivity.this, "请到设置中开启拨打电话权限");
+//										return;
+//								}
+//								startActivity(intentCall);
+//						} else {
+//								// Ask for both permissions
+//								EasyPermissions.requestPermissions(
+//									CommonWebNoTitleActivity.this,
+//									"请先开启拨打电话权限",
+//									RC_CALL,
+//									Manifest.permission.CALL_PHONE);
+//						}
 				}
 
 				/**
@@ -305,26 +305,26 @@ public class CommonWebNoTitleActivity extends AppCompatActivity {
 				 */
 				@JavascriptInterface
 				public void appSaveBitmip(String url) {
-						if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-								OkHttpClientManager.downloadImage(url, new OkHttpClientManager.OnBitmapDownLoadListener() {
-										@Override
-										public void onSuccess(Bitmap bitmap) {
-
-										}
-
-										@Override
-										public void onErr() {
-
-										}
-								});
-						} else {
-								// Ask for both permissions
-								EasyPermissions.requestPermissions(
-									CommonWebNoTitleActivity.this,
-									"请您开启读写权限",
-									RC_STORAGE,
-									STORAGE);
-						}
+//						if (EasyPermissions.hasPermissions(CommonWebNoTitleActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//								OkHttpClientManager.downloadImage(url, new OkHttpClientManager.OnBitmapDownLoadListener() {
+//										@Override
+//										public void onSuccess(Bitmap bitmap) {
+//
+//										}
+//
+//										@Override
+//										public void onErr() {
+//
+//										}
+//								});
+//						} else {
+//								// Ask for both permissions
+//								EasyPermissions.requestPermissions(
+//									CommonWebNoTitleActivity.this,
+//									"请您开启读写权限",
+//									RC_STORAGE,
+//									STORAGE);
+//						}
 				}
 		}
 

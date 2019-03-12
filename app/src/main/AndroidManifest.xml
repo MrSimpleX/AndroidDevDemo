@@ -20,6 +20,7 @@
             android:name=".activitydev.ActivityLifeStateA"
             android:launchMode="standard"/>
         <activity android:name=".activitydev.ActivityLifeStateB"/>
+        <activity android:name=".broadcastdev.TestBroadCastReceive"/>
     </application>
 
 </manifest>
